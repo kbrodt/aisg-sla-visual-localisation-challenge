@@ -1,0 +1,12 @@
++++ roma/models/matcher.py
+@@ -631,6 +631,8 @@
+                     im_A = self.recrop(certainty[0,0], im_A_path)
+                     im_B = self.recrop(certainty[1,0], im_B_path)
+                     #TODO: need to adjust corresps when doing this
+-                else:
+-                    im_A, im_B = Image.open(im_A_path), Image.open(im_B_path)
++                elif isinstance(im_A_path, str):
++                    im_A, im_B = Image.open(im_A_path), Image.open(im_B_path)
++                else:
++                    im_A, im_B = im_A_path, im_B_path
+                 im_A, im_B = test_transform((im_A, im_B))

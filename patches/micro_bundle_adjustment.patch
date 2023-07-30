@@ -1,0 +1,20 @@
++++ micro_bundle_adjustment/__init__.py
+@@ -1,2 +1,5 @@
+ from .bundle_adjustment import bundle_adjust
+-from .kornia_conversions import angle_axis_to_rotation_matrix
+\ No newline at end of file
++from .kornia_conversions import (
++    angle_axis_to_rotation_matrix,
++    rotation_matrix_to_angle_axis,
++)
+
++++ micro_bundle_adjustment/kornia_conversions.py
+@@ -7,7 +7,7 @@
+ 
+ from kornia.constants import pi
+ from kornia.core import Tensor, concatenate, pad, stack, tensor, where
+-from kornia.testing import KORNIA_CHECK, KORNIA_CHECK_SHAPE
++#from kornia.testing import KORNIA_CHECK, KORNIA_CHECK_SHAPE
+ from kornia.utils.helpers import _torch_inverse_cast
+ from kornia.utils.misc import eye_like
+ 

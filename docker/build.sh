@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+
+export BASE_IMAGE=ubuntu:20.04
+
+export PYTHON_VERSION=3.8.10
+
+export PYTORCH_VERSION=2.0.1
+export PYTORCH_VERSION_SUFFIX=+cu118
+export TORCHVISION_VERSION=0.15.2
+export TORCHVISION_VERSION_SUFFIX=+cu118
+export TORCHAUDIO_VERSION=2.0.2
+export TORCHAUDIO_VERSION_SUFFIX=+cu118
+export PYTORCH_DOWNLOAD_URL=https://download.pytorch.org/whl/cu118/torch_stable.html
+
+docker build \
+    --build-arg BASE_IMAGE=${BASE_IMAGE} \
+    --build-arg PYTHON_VERSION=${PYTHON_VERSION} \
+    --build-arg PYTORCH_VERSION=${PYTORCH_VERSION} \
+    --build-arg PYTORCH_VERSION_SUFFIX=${PYTORCH_VERSION_SUFFIX} \
+    --build-arg TORCHVISION_VERSION=${TORCHVISION_VERSION} \
+    --build-arg TORCHVISION_VERSION_SUFFIX=${TORCHVISION_VERSION_SUFFIX} \
+    --build-arg TORCHAUDIO_VERSION=${TORCHAUDIO_VERSION} \
+    --build-arg TORCHAUDIO_VERSION_SUFFIX=${TORCHAUDIO_VERSION_SUFFIX} \
+    --build-arg PYTORCH_DOWNLOAD_URL=${PYTORCH_DOWNLOAD_URL} \
+    -t mvo \
+    -f ./docker/Dockerfile \
+    . \
